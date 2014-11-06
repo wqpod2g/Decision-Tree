@@ -2,13 +2,20 @@ package nju.iip.decisiontree;
 
 import java.util.ArrayList;
 
+
+/**
+ * @description 节点类
+ * @time 2014-11-05
+ * @author wangqiang
+ *
+ */
 public class Node {
 	
 	private int attribute;//分裂属性
 	
 	private ArrayList<ArrayList<Double>> docList;//元组集合
 	
-	private Double split_point;//划分标准
+	private Double classify;//节点所属类别
 	
 	private Node leftChild;//左子树
 	
@@ -19,6 +26,10 @@ public class Node {
 		this.leftChild=null;
 		this.rightChild=null;
 		this.docList=null;
+	}
+	
+	public Node(ArrayList<ArrayList<Double>> a){
+		this.docList=a;
 	}
 	
 	public void setAttribute(int a){
@@ -37,12 +48,12 @@ public class Node {
 		return this.docList;
 	}
 	
-	public void setSplit_point(Double a){
-		this.split_point=a;
+	public void setClassify(Double a){
+		this.classify=a;
 	}
 	
-	public Double getSplit_point(){
-		return this.split_point;
+	public Double getClassify(){
+		return this.classify;
 	}
 	
 	public void setLeftChild(Node a){
