@@ -252,7 +252,7 @@ public class DecisionTree {
 	
 	public static void main(String[] args) throws IOException{
 		getAllMatrix();
-		getAttribte_list();
+		attribte_list=getAttribte_list();
 		process();
 	
 	}
