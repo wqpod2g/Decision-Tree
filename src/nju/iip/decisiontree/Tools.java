@@ -83,16 +83,16 @@ public class Tools {
 	 * @param map
 	 * @return
 	 */
-	public static Double sortMap(HashMap<Double,Double> map){
-		List<Map.Entry<Double,Double>> list = new ArrayList<Map.Entry<Double,Double>>(map.entrySet());
-	    Collections.sort(list,new Comparator<Map.Entry<Double,Double>>() { //升序排序
-	    	public int compare(Entry<Double, Double> o1,Entry<Double, Double> o2) {
+	public static Double sortMap(HashMap<Double,Integer> map){
+		List<Map.Entry<Double,Integer>> list = new ArrayList<Map.Entry<Double,Integer>>(map.entrySet());
+	    Collections.sort(list,new Comparator<Map.Entry<Double,Integer>>() { //升序排序
+	    	public int compare(Entry<Double, Integer> o1,Entry<Double, Integer> o2) {
 	                return o1.getValue().compareTo(o2.getValue());
 	            }
 	        });
 	    
 	    int size=list.size();
-	    Map.Entry<Double,Double> mapping=list.get(size-1);
+	    Map.Entry<Double,Integer> mapping=list.get(size-1);
 	    Double result=mapping.getKey();
 		return result;
 	}
@@ -128,6 +128,25 @@ public class Tools {
     	return deviation ;
     }
 	
+    
+    /**
+	 * @description 十折交叉划分
+	 * @param n
+	 * @param allMatrix
+	 * @param testSample
+	 * @param trainSample
+	 */
+	public static void divide2(int n,ArrayList<ArrayList<Double>>allMatrix,ArrayList<ArrayList<Double>>testSample,ArrayList<ArrayList<Double>>trainSample){
+		for(int i=0;i<allMatrix.size();i++){
+			if(i>=25*n&&i<(n+1)*25){
+				testSample.add(allMatrix.get(i));
+			}
+			else{
+				trainSample.add(allMatrix.get(i));
+			}
+		}
 	
+	}
+
 
 }

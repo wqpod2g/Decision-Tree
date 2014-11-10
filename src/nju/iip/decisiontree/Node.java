@@ -1,6 +1,7 @@
 package nju.iip.decisiontree;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 /**
@@ -21,6 +22,16 @@ public class Node {
 	
 	private Node rightChild;//右子树
 	
+	private HashMap<Double,Node>child_nodes;//子节点集合<属性值，对应分支节点>
+	
+	
+	public void set_child_nodes(HashMap<Double,Node>child_nodes){
+		this.child_nodes=child_nodes;
+	}
+	
+	public HashMap<Double,Node>get_child_nodes(){
+		return this.child_nodes;
+	}
 	
 	public Node(){
 		this.leftChild=null;
@@ -30,6 +41,7 @@ public class Node {
 	
 	public Node(ArrayList<ArrayList<Double>> a){
 		this.docList=a;
+		this.child_nodes=new HashMap<Double,Node>();
 	}
 	
 	public void setAttribute(int a){

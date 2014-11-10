@@ -3,7 +3,6 @@ package nju.iip.decisiontree;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
 
 
@@ -29,8 +28,6 @@ public class DecisionTree {
 	
 	private static int attribte_list_size=0;//属性个数
 	
-	private static int count=0;
-	private static int count1=0;
 	
 	
 	
@@ -70,7 +67,7 @@ public class DecisionTree {
 	 * @description 计算最好的分裂属性
 	 * @param N
 	 * @param attribte_list
-	 * @return
+	 * @return 最好的分裂属性
 	 */
 	public static int Attribute_selection_method(Node N,Node leftChild,Node rightChild){
 		int attribute=0;
@@ -107,10 +104,10 @@ public class DecisionTree {
 	/**
 	 * @description 节点N中所有元组的类别统计
 	 * @param N
-	 * @return
+	 * @return HashMap<类别，元组数>
 	 */
-	public static HashMap<Double,Double>statistics(Node N){
-	    HashMap<Double,Double>statisticsMap=new HashMap<Double,Double>();
+	public static HashMap<Double,Integer>statistics(Node N){
+	    HashMap<Double,Integer>statisticsMap=new HashMap<Double,Integer>();
 		ArrayList<ArrayList<Double>>matrix=N.getDocList();
 		try{
 			for(int i=0;i<matrix.size();i++){
@@ -119,7 +116,7 @@ public class DecisionTree {
 					statisticsMap.put(classify, statisticsMap.get(classify)+1);
 				}
 				else{
-					statisticsMap.put(classify, 1.0);
+					statisticsMap.put(classify, 1);
 				}
 			}
 		}catch(Exception e){
@@ -136,12 +133,9 @@ public class DecisionTree {
 	public static Double getGini(Node N){
 		Double gini=0.0;
 		Double temp=0.0;
-		HashMap<Double,Double>statisticsMap=statistics(N);
-		Double D=0.0;
+		HashMap<Double,Integer>statisticsMap=statistics(N);
+		Double D=1.0*N.getDocList().size();
 		Set<Double>classifys=statisticsMap.keySet();
-		for(Double classify:classifys){
-			D=D+statisticsMap.get(classify);
-		}
 		
 		for(Double classify:classifys){
 			Double p=(statisticsMap.get(classify)/D);
@@ -152,11 +146,6 @@ public class DecisionTree {
 	}
 	
 	
-//	public static void partion(Node N,Node liftChild,Node reightChild){
-//		int attribte=Attribute_selection_method(N);
-//		ArrayList<ArrayList<Double>>
-//	}
-	
 	
 	/**
 	 * @description 计算某个叶子结点中帖子最多的类
@@ -164,7 +153,7 @@ public class DecisionTree {
 	 * @return
 	 */
 	public static Double nodeClassify(Node N){
-		HashMap<Double,Double>map=statistics(N);
+		HashMap<Double,Integer>map=statistics(N);
 		return Tools.sortMap(map);
 	}
 
