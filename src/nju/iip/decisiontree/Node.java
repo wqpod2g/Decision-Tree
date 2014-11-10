@@ -12,6 +12,8 @@ import java.util.HashMap;
  */
 public class Node {
 	
+	private double split_point;//划分位置
+	
 	private int attribute;//分裂属性
 	
 	private ArrayList<ArrayList<Double>> docList;//元组集合
@@ -23,6 +25,14 @@ public class Node {
 	private Node rightChild;//右子树
 	
 	private HashMap<Double,Node>child_nodes;//子节点集合<属性值，对应分支节点>
+	
+	public void set_split_point(double split_point){
+		this.split_point=split_point;
+	}
+	
+	public double get_split_point(){
+		return this.split_point;
+	}
 	
 	
 	public void set_child_nodes(HashMap<Double,Node>child_nodes){

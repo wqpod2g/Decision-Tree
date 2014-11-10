@@ -69,9 +69,11 @@ public class DecisionTree {
 	 * @param attribte_list
 	 * @return 最好的分裂属性
 	 */
-	public static int Attribute_selection_method(Node N,Node leftChild,Node rightChild){
+	public static int Attribute_selection_method(Node N){
 		int attribute=0;
 		Double gini=10.0;
+		Node leftChild=new Node();
+		Node rightChild=new Node();
 		ArrayList<ArrayList<Double>>D=N.getDocList();//点N所包含的元组
 		for(int i=0;i<attribte_list.size();i++){
 			ArrayList<ArrayList<Double>>D1=new ArrayList<ArrayList<Double>>();
@@ -85,7 +87,6 @@ public class DecisionTree {
 					D2.add(vector);
 				}
 			}
-			
 			Node N1=new Node(D1);
 			Node N2=new Node(D2);
 			Double tempGini=(D1.size()/N.getDocList().size())*getGini(N1)+(D2.size()/N.getDocList().size())*getGini(N2);
@@ -95,9 +96,9 @@ public class DecisionTree {
 				leftChild.setDocList(D1);
 				rightChild.setDocList(D2);
 			}
-		
-			
 		}
+		N.setLeftChild(leftChild);
+		N.setRightChild(rightChild);
 		return attribute;
 	}
 	
@@ -169,10 +170,8 @@ public class DecisionTree {
 			    N.setClassify(nodeClassify(N));
 			}
 			else{
-				Node left=new Node();
-				Node right=new Node();
-				int attribute=Attribute_selection_method(N,left,right);
-				if(left.getDocList().size()==0||right.getDocList().size()==0){
+				int attribute=Attribute_selection_method(N);
+				if(N.getLeftChild().getDocList().size()==0||N.getRightChild().getDocList().size()==0){
 					N.setLeftChild(null);
 					N.setRightChild(null);
 					N.setClassify(nodeClassify(N));
@@ -180,10 +179,8 @@ public class DecisionTree {
 				else{
 					//attribte_list.remove(attribute);//删除划分属性
 					N.setAttribute(attribute);
-					N.setLeftChild(left);
-					N.setRightChild(right);
-					getDecisionTree(left);
-					getDecisionTree(right);
+					getDecisionTree(N.getLeftChild());
+					getDecisionTree(N.getRightChild());
 					
 				}
 			}
