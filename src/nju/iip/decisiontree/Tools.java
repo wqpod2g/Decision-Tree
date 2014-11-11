@@ -147,6 +147,29 @@ public class Tools {
 		}
 	
 	}
+	
+	 /**
+		 * @description 十折交叉划分
+		 * @param n
+		 * @param allMatrix
+		 * @param testSample
+		 * @param trainSample
+		 */
+		public static void divide3(int n,ArrayList<ArrayList<Double>>allMatrix,ArrayList<ArrayList<Double>>testSample,ArrayList<ArrayList<Double>>trainSample){
+			for(int i=0;i<allMatrix.size();i++){
+				if(i>=200*n&&i<(n+1)*200){
+					testSample.add(allMatrix.get(i));
+				}
+				else{
+					trainSample.add(allMatrix.get(i));
+				}
+			}
+		
+		}
+	
+	
+	
+	
 
 
 }
