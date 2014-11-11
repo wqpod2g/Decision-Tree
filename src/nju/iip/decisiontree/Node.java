@@ -18,13 +18,23 @@ public class Node {
 	
 	private ArrayList<ArrayList<Double>> docList;//元组集合
 	
-	private Double classify;//节点所属类别
+	private double classify;//节点所属类别
+	
+	private double predict_value;
 	
 	private Node leftChild;//左子树
 	
 	private Node rightChild;//右子树
 	
 	private HashMap<Double,Node>child_nodes;//子节点集合<属性值，对应分支节点>
+	
+	public void set_predict_value(double predict_value){
+		this.predict_value=predict_value;
+	}
+	
+	public double get_predict_value(){
+		return this.predict_value;
+	}
 	
 	public void set_split_point(double split_point){
 		this.split_point=split_point;
@@ -70,11 +80,11 @@ public class Node {
 		return this.docList;
 	}
 	
-	public void setClassify(Double a){
+	public void setClassify(double a){
 		this.classify=a;
 	}
 	
-	public Double getClassify(){
+	public double getClassify(){
 		return this.classify;
 	}
 	

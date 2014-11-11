@@ -166,6 +166,26 @@ public class Tools {
 			}
 		
 		}
+		
+
+		 /**
+			 * @description 十折交叉划分
+			 * @param n
+			 * @param allMatrix
+			 * @param testSample
+			 * @param trainSample
+			 */
+			public static void divide4(int n,ArrayList<ArrayList<Double>>allMatrix,ArrayList<ArrayList<Double>>testSample,ArrayList<ArrayList<Double>>trainSample){
+				for(int i=0;i<allMatrix.size();i++){
+					if(i>=50*n&&i<(n+1)*50){
+						testSample.add(allMatrix.get(i));
+					}
+					else{
+						trainSample.add(allMatrix.get(i));
+					}
+				}
+			
+			}
 	
 	
 	

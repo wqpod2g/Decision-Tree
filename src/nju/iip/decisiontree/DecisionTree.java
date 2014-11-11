@@ -7,7 +7,7 @@ import java.util.Set;
 
 
 /**
- * @decription 决策树算法实现
+ * @decription 决策树算法实现(小百合数据集)
  * @time 2014-11-5
  * @author wangqiang
  *
