@@ -7,7 +7,7 @@ import java.util.Set;
 
 
 /**
- * @description 离散属性值决策树
+ * @description 离散属性值决策树(分类)
  * @author wangqiang
  *
  */

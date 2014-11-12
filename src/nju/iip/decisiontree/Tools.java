@@ -128,6 +128,30 @@ public class Tools {
     	return deviation ;
     }
     
+    
+    public static int max(int a,int b){
+    	if(a>=b){
+    		return a;
+    	}
+    	else{
+    		return b;
+    	}
+    }
+    
+    /**
+     * @description 计算二叉树的高度
+     * @param N
+     * @return
+     */
+    public static int getTreeHeight(Node N){
+    	if(N==null){
+    		return 0;
+    	}
+    	else{
+    		return 1+max(getTreeHeight(N.getLeftChild()),getTreeHeight(N.getRightChild()));
+    	}
+    }
+    
 
 		 /**
 			 * @description 十折交叉划分
@@ -149,10 +173,26 @@ public class Tools {
 				return num;
 			
 			}
-	
-	
-	
-	
+			
+			/**
+			 * @description 改变矩阵存储（每列一个list改为每行一个list）
+			 * @param matrix
+			 * @return
+			 */
+			public static ArrayList<ArrayList<Double>>getChangeMatrix(ArrayList<ArrayList<Double>>matrix){
+				ArrayList<ArrayList<Double>>change_matrix=new ArrayList<ArrayList<Double>>();
+				int row=matrix.size();
+				int line=matrix.get(0).size();
+				for(int i=0;i<line;i++){
+					ArrayList<Double>list=new ArrayList<Double>();
+					for(int j=0;j<row;j++){
+						list.add(matrix.get(j).get(i));
+					}
+					change_matrix.add(list);
+				}
+				return change_matrix;
+			}
+			
 
 
 }

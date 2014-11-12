@@ -238,6 +238,7 @@ public class DecisionTreeRegression {
 			Tools.divide2(i, allMatrix, testSample, trainSample);
 			Node N=getRootNode(trainSample);
 			getDecisionTree(N);
+			//System.out.println("树的高度为:"+Tools.getTreeHeight(N));
 			for(int j=0;j<testSample.size();j++){
 				Double c1=testSample.get(j).get(attribte_list_size);
 				Double c2=getResult(testSample.get(j),N);
@@ -249,6 +250,7 @@ public class DecisionTreeRegression {
 		}
 		System.out.println("十折RMSE均值为:"+Tools.getMean(resultList));
 	}
+	
 	
 	
 	public static void main(String[] args){
