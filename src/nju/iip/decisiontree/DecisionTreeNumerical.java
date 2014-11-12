@@ -16,7 +16,7 @@ public class DecisionTreeNumerical {
 	/**
 	 * 测试数据路径
 	 */
-	private static String filePath="Benchmark Dataset/segment.data";
+	private static String filePath="Benchmark Dataset/lily.data";
 	
 	private static ArrayList<Integer>attribte_list=new ArrayList<Integer>();//属性集合
 	
@@ -259,7 +259,7 @@ public class DecisionTreeNumerical {
 			int count=0;
 			ArrayList<ArrayList<Double>>testSample=new ArrayList<ArrayList<Double>>();
 			ArrayList<ArrayList<Double>>trainSample=new ArrayList<ArrayList<Double>>();
-			int num=Tools.divide2(i, allMatrix, testSample, trainSample);
+			Tools.divide(i, allMatrix, testSample, trainSample);
 			Node N=getRootNode(trainSample);
 			getDecisionTree(N);
 			for(int j=0;j<testSample.size();j++){
@@ -269,8 +269,8 @@ public class DecisionTreeNumerical {
 					count++;
 				}
 			}
-			System.out.println("第"+(i+1)+"折命中率为:"+1.0*count/num);
-			resultList.add(1.0*count/num);
+			System.out.println("第"+(i+1)+"折命中率为:"+1.0*count/100);
+			resultList.add(1.0*count/100);
 		}
 		System.out.println("十折均值为:"+Tools.getMean(resultList));
 	}
