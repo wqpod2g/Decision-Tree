@@ -324,6 +324,7 @@ public class DecisionTreeStacking {
 	
 	
 	public static void main(String[] args){
+		System.out.println("测试数据集为:"+filePath);
 		getAllMatrix();
 		long startTime=System.currentTimeMillis();   //获取开始时间
 		process();

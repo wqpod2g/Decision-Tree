@@ -237,6 +237,7 @@ public class DecisionTree {
 	
 	
 	public static void main(String[] args) throws IOException{
+		System.out.println("测试数据集为:"+filePath);
 		getAllMatrix();
 		attribte_list=getAttribte_list();
 		process();

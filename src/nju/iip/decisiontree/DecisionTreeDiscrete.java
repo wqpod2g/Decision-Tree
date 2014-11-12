@@ -182,7 +182,7 @@ public class DecisionTreeDiscrete {
 	 * @param N
 	 */
 	public static void getDecisionTree(Node N){
-		if(getInfo(N.getDocList())<0.5||attribute_list_map.size()==0){
+		if(getInfo(N.getDocList())<0.58||attribute_list_map.size()==0){
 			N.get_child_nodes().clear();
 		    N.setClassify(nodeClassify(N));
 		}
@@ -260,8 +260,12 @@ public class DecisionTreeDiscrete {
 	
 	
 	public static void main(String[] args) throws IOException{
+		System.out.println("测试数据集为:"+filePath);
 		getAllMatrix();
+		long startTime=System.currentTimeMillis();   //获取开始时间
 		process();
+		long endTime=System.currentTimeMillis(); //获取结束时间   
+		System.out.println("运行时间： "+(endTime-startTime)/1000.0+"s");
 	
 	}
 

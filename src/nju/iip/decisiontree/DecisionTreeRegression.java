@@ -9,7 +9,7 @@ public class DecisionTreeRegression {
 	/**
 	 * 测试数据路径
 	 */
-	private static String filePath="Benchmark Dataset/housing.data";
+	private static String filePath="Benchmark Dataset/meta.data";
 	
 	private static ArrayList<Integer>attribte_list=new ArrayList<Integer>();//属性集合
 	
@@ -254,9 +254,13 @@ public class DecisionTreeRegression {
 	
 	
 	public static void main(String[] args){
+		System.out.println("测试数据集为:"+filePath);
 		getAllMatrix();
 		getAttribte_list();
+		long startTime=System.currentTimeMillis();   //获取开始时间
 		process();
+		long endTime=System.currentTimeMillis(); //获取结束时间   
+		System.out.println("运行时间： "+(endTime-startTime)/1000.0+"s");
 	}
 	
 	
