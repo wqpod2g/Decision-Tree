@@ -235,7 +235,7 @@ public class DecisionTreeRegression {
 			double sum=0.0;
 			ArrayList<ArrayList<Double>>testSample=new ArrayList<ArrayList<Double>>();
 			ArrayList<ArrayList<Double>>trainSample=new ArrayList<ArrayList<Double>>();
-			Tools.divide4(i, allMatrix, testSample, trainSample);
+			Tools.divide2(i, allMatrix, testSample, trainSample);
 			Node N=getRootNode(trainSample);
 			getDecisionTree(N);
 			for(int j=0;j<testSample.size();j++){

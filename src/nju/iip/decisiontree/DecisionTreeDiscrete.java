@@ -20,7 +20,7 @@ public class DecisionTreeDiscrete {
 	/**
 	 * 测试数据路径
 	 */
-	private static String filePath="Benchmark Dataset/lily.data";
+	private static String filePath="Benchmark Dataset/breast-cancer.data";
 	
 	private static HashMap<Integer,ArrayList<Double>>attribute_list_map=new HashMap<Integer,ArrayList<Double>>();
 	
@@ -242,7 +242,7 @@ public class DecisionTreeDiscrete {
 			int count=0;
 			ArrayList<ArrayList<Double>>testSample=new ArrayList<ArrayList<Double>>();
 			ArrayList<ArrayList<Double>>trainSample=new ArrayList<ArrayList<Double>>();
-			Tools.divide(i, allMatrix, testSample, trainSample);
+			int num=Tools.divide2(i, allMatrix, testSample, trainSample);
 			Node N=getRootNode(trainSample);
 			getDecisionTree(N);
 			for(int j=0;j<testSample.size();j++){
@@ -252,8 +252,8 @@ public class DecisionTreeDiscrete {
 					count++;
 				}
 			}
-			System.out.println("第"+(i+1)+"折命中率为:"+count/100.0);
-			resultList.add(count/100.0);
+			System.out.println("第"+(i+1)+"折命中率为:"+1.0*count/num);
+			resultList.add(1.0*count/num);
 		}
 		System.out.println("十折均值为:"+Tools.getMean(resultList));
 	}

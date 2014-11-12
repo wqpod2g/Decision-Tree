@@ -127,46 +127,7 @@ public class Tools {
     	
     	return deviation ;
     }
-	
     
-    /**
-	 * @description 十折交叉划分
-	 * @param n
-	 * @param allMatrix
-	 * @param testSample
-	 * @param trainSample
-	 */
-	public static void divide2(int n,ArrayList<ArrayList<Double>>allMatrix,ArrayList<ArrayList<Double>>testSample,ArrayList<ArrayList<Double>>trainSample){
-		for(int i=0;i<allMatrix.size();i++){
-			if(i>=25*n&&i<(n+1)*25){
-				testSample.add(allMatrix.get(i));
-			}
-			else{
-				trainSample.add(allMatrix.get(i));
-			}
-		}
-	
-	}
-	
-	 /**
-		 * @description 十折交叉划分
-		 * @param n
-		 * @param allMatrix
-		 * @param testSample
-		 * @param trainSample
-		 */
-		public static void divide3(int n,ArrayList<ArrayList<Double>>allMatrix,ArrayList<ArrayList<Double>>testSample,ArrayList<ArrayList<Double>>trainSample){
-			for(int i=0;i<allMatrix.size();i++){
-				if(i>=200*n&&i<(n+1)*200){
-					testSample.add(allMatrix.get(i));
-				}
-				else{
-					trainSample.add(allMatrix.get(i));
-				}
-			}
-		
-		}
-		
 
 		 /**
 			 * @description 十折交叉划分
@@ -175,15 +136,17 @@ public class Tools {
 			 * @param testSample
 			 * @param trainSample
 			 */
-			public static void divide4(int n,ArrayList<ArrayList<Double>>allMatrix,ArrayList<ArrayList<Double>>testSample,ArrayList<ArrayList<Double>>trainSample){
+			public static int  divide2(int n,ArrayList<ArrayList<Double>>allMatrix,ArrayList<ArrayList<Double>>testSample,ArrayList<ArrayList<Double>>trainSample){
+				int num=allMatrix.size()/10;
 				for(int i=0;i<allMatrix.size();i++){
-					if(i>=50*n&&i<(n+1)*50){
+					if(i>=num*n&&i<(n+1)*num){
 						testSample.add(allMatrix.get(i));
 					}
 					else{
 						trainSample.add(allMatrix.get(i));
 					}
 				}
+				return num;
 			
 			}
 	

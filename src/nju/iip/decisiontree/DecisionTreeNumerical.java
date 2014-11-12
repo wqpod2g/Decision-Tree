@@ -259,7 +259,7 @@ public class DecisionTreeNumerical {
 			int count=0;
 			ArrayList<ArrayList<Double>>testSample=new ArrayList<ArrayList<Double>>();
 			ArrayList<ArrayList<Double>>trainSample=new ArrayList<ArrayList<Double>>();
-			Tools.divide3(i, allMatrix, testSample, trainSample);
+			int num=Tools.divide2(i, allMatrix, testSample, trainSample);
 			Node N=getRootNode(trainSample);
 			getDecisionTree(N);
 			for(int j=0;j<testSample.size();j++){
@@ -269,8 +269,8 @@ public class DecisionTreeNumerical {
 					count++;
 				}
 			}
-			System.out.println("第"+(i+1)+"折命中率为:"+count/200.0);
-			resultList.add(count/200.0);
+			System.out.println("第"+(i+1)+"折命中率为:"+1.0*count/num);
+			resultList.add(1.0*count/num);
 		}
 		System.out.println("十折均值为:"+Tools.getMean(resultList));
 	}
