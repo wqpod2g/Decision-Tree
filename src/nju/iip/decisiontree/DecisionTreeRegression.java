@@ -9,7 +9,7 @@ public class DecisionTreeRegression {
 	/**
 	 * 测试数据路径
 	 */
-	private static String filePath="Benchmark Dataset/meta.data";
+	private static String filePath="Benchmark Dataset/lily.data";
 	
 	private static ArrayList<Integer>attribte_list=new ArrayList<Integer>();//属性集合
 	
@@ -238,7 +238,7 @@ public class DecisionTreeRegression {
 			Tools.divide2(i, allMatrix, testSample, trainSample);
 			Node N=getRootNode(trainSample);
 			getDecisionTree(N);
-			//System.out.println("树的高度为:"+Tools.getTreeHeight(N));
+			System.out.println("树的高度为:"+Tools.getTreeHeight(N));
 			for(int j=0;j<testSample.size();j++){
 				Double c1=testSample.get(j).get(attribte_list_size);
 				Double c2=getResult(testSample.get(j),N);
